@@ -1,5 +1,5 @@
-# UMS Laravel/Vue App
-> simple User Management System
+# UMS Laravel / Vue App
+> A simple User Management System
 > Laravel API that uses the API resources with a Vue.js frontend
 
 ## Quick Start
