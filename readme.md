@@ -13,7 +13,8 @@ npm install
 
 # Configure environment
     - copy / rename .env.example to .env
-    - Create a blank DB and setup DB privileges on MySql server; Put DB user and password into `.env` file  
+    - Create a blank DB and setup DB privileges on MySql server
+    - Put DB user and password into `.env` file  
 
 # Run Migrations
 php artisan migrate

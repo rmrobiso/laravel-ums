@@ -5,35 +5,14 @@ namespace App\Repositories;
 interface UserRepositoryInterface
 {
     /**
-     * Get user by it's ID
-     *
-     * @param int
-     */
-    public function get($id);
-
-     /**
-     * Get user by it's ID
-     *
-     * @param int
-     */
-    public function getMultiple(array $ids);
-
-    /**
-     * Get all users.
-     *
-     * @return mixed
-     */
-    public function all();
-
-    /**
-     * create new user.
+     * Create New User
      *
      * @param array
      */
     public function create(array $post_data);
 
     /**
-     * Updates user.
+     * Updates User by ID
      *
      * @param int
      * @param array
@@ -41,18 +20,37 @@ interface UserRepositoryInterface
     public function update($id, array $post_data);
 
     /**
-     * Delete a user.
+     * Delete a Single User by ID
      *
      * @param int
      */
     public function delete($id);
 
     /**
-     * Delete multiple users.
+     * Delete Multiple Users
      *
      * @param array
      */
     public function deleteMultiple(array $ids);
 
-    
+    /**
+     * Get User by it's ID
+     *
+     * @param int
+     */
+    public function get($id);
+
+    /**
+     * Get Multiple User by array of IDs
+     *
+     * @param int
+     */
+    public function getMultiple(array $ids);
+
+    /**
+     * Get all Users
+     *
+     * @return mixed
+     */
+    public function all();    
 }
