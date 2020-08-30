@@ -2,7 +2,7 @@
     <div class="container mt-5" v-if="token === null">
       <div class="jumbotron">
         <form class="form-signin" @submit.prevent="userLogin()">
-          <div class="alert alert-dark message-alert" hidden>
+          <div class="alert alert-secondary message-alert" hidden>
               <strong class="msg">Alert Message!</strong>
           </div>
           <h1 class="h3 mb-3 font-weight-normal text-center">Please Login</h1>
@@ -16,8 +16,8 @@
           <a href="#" data-toggle="modal" data-target="#registerModal" > Sign Up</a>
         </div>
       </div>
-        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-          <div class="modal-dialog" role="document">
+      <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="registerModalLabel">Registration</h5>
@@ -27,7 +27,7 @@
               </div>
               <form @submit.prevent="userRegister()">
               <div class="modal-body">
-                <div class="alert alert-dark message-alert" hidden>
+                <div class="alert alert-secondary message-alert" hidden>
                     <strong class="msg">Alert Message!</strong>
                 </div>
                 <div class="row">
@@ -116,7 +116,7 @@ export default {
                   this.token = localStorage.getItem('token');
                   window.location.reload();
                 } else {
-                  this.alertMessage("Oops! " + res.data.message);
+                  this.alertMessage(res.data.message);
                 }
             })
             .catch(err => this.alertMessage(err));
@@ -132,9 +132,9 @@ export default {
             .then(res => res.json())
             .then(res => {
               if (res.data.error) {
-                this.alertMessage("Oops! validation error, please check all input fields.");
+                this.alertMessage("Input validation error!, please check all input fields.");
               } else {
-                this.alertMessage("Nice! User created.");
+                this.alertMessage("New User created!.");
                 this.clearUser();
                 $('#registerModal').modal('hide');
                 $('body').removeClass('modal-open');

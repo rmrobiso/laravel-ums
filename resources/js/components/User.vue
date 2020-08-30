@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container" v-if="token !== null && auth.is_admin === 1">
-            <div class="alert alert-dark message-alert" hidden>
+            <div class="alert alert-secondary message-alert" hidden>
                 <strong class="msg">Alert Message!</strong>
             </div>
             <div class="row">
@@ -20,6 +20,7 @@
                             <th>Firstname</th>
                             <th>Lastname</th>
                             <th>Email</th>
+                            <th>Role</th>
                             <th>Actions</th>
                           </tr>
                         </thead>
@@ -29,6 +30,7 @@
                             <td>{{ user.first_name }}</td>
                             <td>{{ user.last_name }}</td>
                             <td>{{ user.email }}</td> 
+                            <td>{{ user.is_admin == 1 ? "Admin" : "User" }}</td> 
                             <td>
                                 <button @click="editUser(user)" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-pencil-square-o"></i>&nbsp;edit</button>
                                 <button @click="deleteUser(user.id)" type="button" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o"></i>&nbsp;delete</button>
@@ -68,7 +70,7 @@
                   </div>
                   <form @submit.prevent="saveUser()">
                   <div class="modal-body">
-                    <div class="alert alert-dark message-alert" hidden>
+                    <div class="alert alert-secondary message-alert" hidden>
                       <strong class="msg">Alert Message!</strong>
                   </div>
                     <div class="row">
@@ -216,13 +218,13 @@ export default {
                     if (res.data.message) {
                         this.alertMessage(res.data.message);
                     } else if (res.data.error) {
-                        this.alertMessage("Oops! validation error, please check all input fields.");
+                        this.alertMessage("Validation error! Please check all input fields.");
                     } else {
                         this.clearUser();
                         $('#userModal').modal('hide');
                         $('body').removeClass('modal-open');
                         $('.modal-backdrop').remove();
-                        this.alertMessage('Nice! User created!');
+                        this.alertMessage('New User created successfully!');
                         this.fetchUsers();
                     }
                 })
@@ -242,11 +244,11 @@ export default {
                     if (res.data.message) {
                         this.alertMessage(res.data.message);
                     } else if (res.data.error) {
-                        this.alertMessage("Oops! validation error, please check all input fields.");
+                        this.alertMessage("Validation error! Please check all input fields.");
                     } else {
                         this.clearUser();
                         $('#userModal').modal('hide');
-                        this.alertMessage('Nice! User updated!');
+                        this.alertMessage('User updated successfully!');
                         this.fetchUsers();
                     }
                     this.edit = !this.edit;;
@@ -270,7 +272,7 @@ export default {
                         this.alertMessage(res.data.message);
                         this.fetchUsers();
                     } else {
-                        this.alertMessage('Nice! User deleted!');
+                        this.alertMessage('User deleted successfully!');
                         this.fetchUsers();
                     }
                 })
@@ -292,9 +294,9 @@ export default {
                 if (res.data.message) {
                     this.alertMessage(res.data.message);
                 } else if (res.data.error) {
-                    this.alertMessage("Oops! Please select user/s to delete by ticking the checkbox beside their names.");
+                    this.alertMessage("Please select user/s to delete by ticking the checkbox!");
                 } else {
-                    this.alertMessage('Nice! User/s deleted!');
+                    this.alertMessage('Multiple Users deleted successfully!');
                     this.fetchUsers();
                 }
             })

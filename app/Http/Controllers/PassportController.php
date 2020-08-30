@@ -58,7 +58,7 @@ class PassportController extends UserController
             return new PassportResource($data);
 
         } else {
-            return new PassportResource(['message' => 'Unauthorized']);
+            return new PassportResource(['message' => 'Unauthorized User! Please Register.']);
         }
     }
 

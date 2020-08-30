@@ -1777,7 +1777,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1816,7 +1815,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.token = localStorage.getItem('token');
           window.location.reload();
         } else {
-          _this.alertMessage("Oops! " + res.data.message);
+          _this.alertMessage(res.data.message);
         }
       })["catch"](function (err) {
         return _this.alertMessage(err);
@@ -1835,9 +1834,9 @@ __webpack_require__.r(__webpack_exports__);
         return res.json();
       }).then(function (res) {
         if (res.data.error) {
-          _this2.alertMessage("Oops! validation error, please check all input fields.");
+          _this2.alertMessage("Input validation error!, please check all input fields.");
         } else {
-          _this2.alertMessage("Nice! User created.");
+          _this2.alertMessage("New User created!.");
 
           _this2.clearUser();
 
@@ -2087,6 +2086,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2165,7 +2166,7 @@ __webpack_require__.r(__webpack_exports__);
           if (res.data.message) {
             _this2.alertMessage(res.data.message);
           } else if (res.data.error) {
-            _this2.alertMessage("Oops! validation error, please check all input fields.");
+            _this2.alertMessage("Validation error! Please check all input fields.");
           } else {
             _this2.clearUser();
 
@@ -2173,7 +2174,7 @@ __webpack_require__.r(__webpack_exports__);
             $('body').removeClass('modal-open');
             $('.modal-backdrop').remove();
 
-            _this2.alertMessage('Nice! User created!');
+            _this2.alertMessage('New User created successfully!');
 
             _this2.fetchUsers();
           }
@@ -2195,13 +2196,13 @@ __webpack_require__.r(__webpack_exports__);
           if (res.data.message) {
             _this2.alertMessage(res.data.message);
           } else if (res.data.error) {
-            _this2.alertMessage("Oops! validation error, please check all input fields.");
+            _this2.alertMessage("Validation error! Please check all input fields.");
           } else {
             _this2.clearUser();
 
             $('#userModal').modal('hide');
 
-            _this2.alertMessage('Nice! User updated!');
+            _this2.alertMessage('User updated successfully!');
 
             _this2.fetchUsers();
           }
@@ -2232,7 +2233,7 @@ __webpack_require__.r(__webpack_exports__);
 
             _this3.fetchUsers();
           } else {
-            _this3.alertMessage('Nice! User deleted!');
+            _this3.alertMessage('User deleted successfully!');
 
             _this3.fetchUsers();
           }
@@ -2260,9 +2261,9 @@ __webpack_require__.r(__webpack_exports__);
         if (res.data.message) {
           _this4.alertMessage(res.data.message);
         } else if (res.data.error) {
-          _this4.alertMessage("Oops! Please select user/s to delete by ticking the checkbox beside their names.");
+          _this4.alertMessage("Please select user/s to delete by ticking the checkbox!");
         } else {
-          _this4.alertMessage('Nice! User/s deleted!');
+          _this4.alertMessage('Multiple Users deleted successfully!');
 
           _this4.fetchUsers();
         }
@@ -38374,7 +38375,10 @@ var render = function() {
           [
             _c(
               "div",
-              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              {
+                staticClass: "modal-dialog modal-lg",
+                attrs: { role: "document" }
+              },
               [
                 _c("div", { staticClass: "modal-content" }, [
                   _c("div", { staticClass: "modal-header" }, [
@@ -38736,7 +38740,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "alert alert-dark message-alert", attrs: { hidden: "" } },
+      {
+        staticClass: "alert alert-secondary message-alert",
+        attrs: { hidden: "" }
+      },
       [_c("strong", { staticClass: "msg" }, [_vm._v("Alert Message!")])]
     )
   },
@@ -38764,7 +38771,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "alert alert-dark message-alert", attrs: { hidden: "" } },
+      {
+        staticClass: "alert alert-secondary message-alert",
+        attrs: { hidden: "" }
+      },
       [_c("strong", { staticClass: "msg" }, [_vm._v("Alert Message!")])]
     )
   },
@@ -38944,6 +38954,10 @@ var render = function() {
                       _c("td", [_vm._v(_vm._s(user.last_name))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(user.email))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(user.is_admin == 1 ? "Admin" : "User"))
+                      ]),
                       _vm._v(" "),
                       _c("td", [
                         _c(
@@ -39589,7 +39603,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "alert alert-dark message-alert", attrs: { hidden: "" } },
+      {
+        staticClass: "alert alert-secondary message-alert",
+        attrs: { hidden: "" }
+      },
       [_c("strong", { staticClass: "msg" }, [_vm._v("Alert Message!")])]
     )
   },
@@ -39607,6 +39624,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Role")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Actions")])
       ])
     ])
@@ -39617,7 +39636,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "alert alert-dark message-alert", attrs: { hidden: "" } },
+      {
+        staticClass: "alert alert-secondary message-alert",
+        attrs: { hidden: "" }
+      },
       [_c("strong", { staticClass: "msg" }, [_vm._v("Alert Message!")])]
     )
   },
